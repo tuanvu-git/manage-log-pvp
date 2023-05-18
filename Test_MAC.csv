@@ -1,0 +1,13 @@
+custom_authentication_headers_in_cloud_patching,Build Passed,0:3 minute
+iTunes,Build Passed,0:2 minute
+gitscm_x64,Build Passed,0:3 minute
+putty_x64,Build Passed,0:1 minute
+notepad_plus_plus_x86,Build Passed,0:3 minute
+notepad_plus_plus_x64,Build Passed,0:3 minute
+putty_x86,Build Passed,0:2 minute
+seamonkey_x64,Build Passed,0:2 minute
+telegram,Build Passed,0:1 minute
+seamonkey_x86,Build Passed,0:2 minute
+winscp,Build Passed,0:1 minute
+Total products,193
+Total runtime,0:1:26 hour
