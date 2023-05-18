@@ -1,12 +1,10 @@
-import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import moment from "moment";
+import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 // get report by date
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const date = searchParams.get("date");
   const history = await prisma.report.findMany({
     where: {
       system: 'window',
@@ -18,5 +16,5 @@ export async function GET(request: Request) {
     }
   });
 
-  return NextResponse.json({ data: history });
+  return NextResponse.json({  history });
 }

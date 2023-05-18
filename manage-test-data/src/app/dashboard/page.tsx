@@ -1,27 +1,82 @@
-// "use client";
-import { Metadata } from "next";
-// import { useState } from "react";
-
-// export const metadata: Metadata = {
-//   title: 'Next.js',
-// };
-
-import "./page.scss";
+"use client";
 import { IPage } from "@/interface/IPage";
+import { Report } from "@prisma/client";
+import axios from "axios";
+import { ListGroup } from "flowbite-react";
+import moment from "moment";
+import { useEffect, useState } from "react";
+import "./page.scss";
 export default function Page({ params }: IPage) {
-  console.log("aa", params?.abc);
+  console.log(params);
+  const [selectedDate, setSelectedDate] = useState(
+    moment().format("yyyy-mm-dd")
+  );
+  const [stackMessage, setStackMessage] = useState(
+    '',
+  );
+  const [selectedSystem, setSelectedSystem] = useState(
+    "window" as "window" | "mac" | "wuo"
+  );
+  const [historyList, setHistoryList] = useState([] as Report[]);
+  
+  useEffect(() => {
+    axios.get("/history-list").then((res) => {
+      setHistoryList(res.data);
+    });
+  }, []);
+
+  useEffect(()=> {
+   if(!stackMessage) return;
+   alert(stackMessage);
+  }, [stackMessage])
+
+  const onCommentChange = (item: Report) => {
+    axios
+      .post("/report/" + item.id + "/", {
+        id: item.id,
+        comment: item.comment,
+      })
+      .then((res) => {
+        setStackMessage(res.data.message);
+      });
+  };
+
+  useEffect(() => {
+    const params = {
+      system: selectedSystem,
+      date: selectedDate,
+    };
+
+    // Use axios.get() to make the GET request with the query parameters
+    axios
+      .get("/report", { params })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [selectedSystem, selectedDate]);
+
+  // call api get list history,
 
   return (
     <div className="dashboard-page-component">
-      <h1 className="d-none"> are You forgot insert data test today? </h1>
+      <h1 className="hidden"> are You forgot insert data test today? </h1>
       <div className="list-history-container">
-        <div className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-          <a
-            aria-current="true"
-            className="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg cursor-pointer dark:bg-gray-800 dark:border-gray-600"
-          >
-            2023-20-20
-          </a>
+        <div className="w-48">
+          <ListGroup>
+            <ListGroup.Item
+              onClick={() => {
+                console.log("TODO");
+              }}
+              active={true}
+              href="/list-group"
+            >
+              Profile
+            </ListGroup.Item>
+            <ListGroup.Item href="/list-group">Download</ListGroup.Item>
+          </ListGroup>
         </div>
       </div>
       <div className="content-wrapper">

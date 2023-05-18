@@ -1,24 +1,25 @@
-import { IReport } from "@/interface/api/IReport";
 import { ICSVReport } from "@/interface/api/IReport";
 import { PrismaClient, Report } from "@prisma/client";
-import { NextResponse } from "next/server";
 import moment from "moment";
+import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 // check request timeout. insert data take too much time.
-
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 export async function POST(request: Request) {
   const data = await request.formData();
   console.log(data);
   const filewindow = data.get("fileWindow") as File;
-  const fileMac = data.get("fileWindow") as File;
-  const fileWUO = data.get("fileWindow") as File;
-  let allReport: IReport[] = [];
-
+  const fileMac = data.get("fileMac") as File;
+  const fileWUO = data.get("fileWUO") as File;
+  let allReport: Report[] = [];
   allReport.concat(await importDB(filewindow, "window"));
   allReport.concat(await importDB(fileMac, "mac"));
   allReport.concat(await importDB(fileWUO, "wuo"));
-  return NextResponse.json({ data: allReport, message: 'insert data successfully' });
+  return NextResponse.json({
+    data: allReport,
+    message: "insert data successfully",
+  });
 }
 
 function convertCSVToJson(text: string): ICSVReport[] {
@@ -29,6 +30,7 @@ function convertCSVToJson(text: string): ICSVReport[] {
   for (let i = 0; i < arr.length; i++) {
     const values = arr[i].split(",");
     const obj: any = {};
+    if (values.length !== 3) continue; // wrong format line.
     values.forEach((value, index) => {
       obj[columnName[index]] = value;
     });
@@ -48,58 +50,46 @@ function mappingComment(source: Report[], productName: string, system: string) {
 }
 
 async function importDB(file: File, system: "window" | "mac" | "wuo") {
+  if (!file) return [];
   const text = await file.text();
   const arrObject = convertCSVToJson(text);
-  const reports$: any[] = [];
-  const count = await prisma.report.count({
+  let reports: any[] = [];
+  const a = moment;
+  const allPreviusData = await prisma.report.findMany({
     where: {
-      date: moment().format("yyyy-mm-dd"),
-      system,
+      date: moment().add(-1, "day").format("YYYY-MM-DD"),
     },
   });
 
-  let allReport: IReport[] = [];
-  if (count === 0) {
-    const allPreviusData = await prisma.report.findMany({
+  for (let i = 0; i < arrObject.length; i++) {
+    const report = arrObject[i];
+    const insertedReport = await prisma.report.upsert({
       where: {
-        date: moment().add(-1, "day").format("yyyy-mm-dd"),
+        date_productName_system: {
+          date: moment().format("YYYY-MM-DD"),
+          productName: report.name,
+          system: system,
+        },
+      },
+      create: {
+        date: moment().format("YYYY-MM-DD"),
+        productName: report.name,
+        buildStatus: report.status,
+        time: report.time,
+        system: system,
+        filePath: `/${report.name}.log`,
+        comment: mappingComment(allPreviusData, report.name, system),
+      },
+      update: {
+        buildStatus: report.status,
+        time: report.time,
+        filePath: `/${report.name}.log`,
+        comment: mappingComment(allPreviusData, report.name, system),
       },
     });
-    // have data today, execute update updat
-    arrObject.forEach(async (report) => {
-      const temp = prisma.report.create({
-        data: {
-          date: moment().format('yyyy-mm-dd'),
-          productName: report.name,
-          buildStatus: report.status,
-          time: report.time,
-          system: system,
-          filePath: `/public/${report.name}.log`,
-          comment: mappingComment(allPreviusData, report.name),
-          createdAt: moment().format('yyyy-mm-dd'),
-          updatedAt:moment().format('yyyy-mm-dd'),
-        },
-      });
-      reports$.push(temp);
-    });
-  } else {
-    arrObject.forEach((report) => {
-      const temp = prisma.report.updateMany({
-        where: {
-          date: moment().format('yyyy-mm-dd'),
-        },
-        data: {
-          buildStatus: report.status,
-          time: report.time,
-          system: system,
-          filePath: `/public/${report.name}.log`,
-          createdAt: moment().format('yyyy-mm-dd'),
-          updatedAt: moment().format('yyyy-mm-dd'),
-        },
-      });
-      reports$.push(temp);
-    });
+    reports.push(insertedReport);
+    console.log("current" + i);
   }
-  allReport = await Promise.all(reports$);
-  return allReport;
+
+  return reports;
 }

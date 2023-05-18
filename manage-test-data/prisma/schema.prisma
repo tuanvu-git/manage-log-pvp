@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["distinct"]
+  previewFeatures = ["distinct", "createMany"]
 }
 
 datasource db {
@@ -12,7 +12,7 @@ datasource db {
 }
 model Report {
   id Int @id @default(autoincrement())
-  date DateTime // time miliseconds
+  date String // yyyy-mm-dd format
   productName String
   buildStatus String
   time String
@@ -21,7 +21,8 @@ model Report {
   comment String
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  // primary key is combine date and name
+  @@unique([date, productName, system])
+  // primary key is combine date and name and system
 }
 // model User {
 //   id    Int     @id @default(autoincrement())

@@ -1,4 +1,3 @@
-import { ALL_ROUTER } from "@/constant/router.constant";
 import { IPage } from "@/interface/IPage";
 
 
@@ -7,8 +6,9 @@ export default function DashboardLayout({ children }: IPage) {
   return (
     <div className="dashboard-component">
       {/* TODO */}
-      {ALL_ROUTER.dashboard.mac}
+      {/* {ALL_ROUTER.dashboard.mac} */}
       {children}
+      {/* <div className="bg-blue-700 h-5">hes</div> */}
     </div>
   );
 }
