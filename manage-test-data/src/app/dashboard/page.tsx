@@ -20,7 +20,7 @@ export default function Page({ params }: IPage) {
   const [historyList, setHistoryList] = useState([] as Report[]);
   
   useEffect(() => {
-    axios.get("/history-list").then((res) => {
+    axios.get("/api/history-list").then((res) => {
       setHistoryList(res.data);
     });
   }, []);
@@ -39,6 +39,10 @@ export default function Page({ params }: IPage) {
       .then((res) => {
         setStackMessage(res.data.message);
       });
+  };
+  
+  const onSelectedSystem = (system:string) => {
+    
   };
 
   useEffect(() => {

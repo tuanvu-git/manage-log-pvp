@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 // get report by date
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
   const history = await prisma.report.findMany({
     where: {
       system: 'window',
