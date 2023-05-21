@@ -1,0 +1,14 @@
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/vim/Task.rb:15:in `wait_for_completion': QuestionPending: The operation cannot be allowed at the current time because the virtual machine has a question pending:  (RbVmomi::Fault)
+ 'msg.hbacommon.outofspace:There is no more space for virtual disk 'windows-10-64_autotest_01_2-000001.vmdk'. You might be able to continue this session by freeing disk space on the relevant volume, and clicking Retry. Click Cancel to terminate this session.
+'.
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:581:in `revert_to_current_snapshot'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:511:in `rescue in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `<main>'
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/vim/Task.rb:15:in `wait_for_completion': QuestionPending: The operation cannot be allowed at the current time because the virtual machine has a question pending:  (RbVmomi::Fault)
+ 'msg.hbacommon.outofspace:There is no more space for virtual disk 'windows-10-64_autotest_01_2-000001.vmdk'. You might be able to continue this session by freeing disk space on the relevant volume, and clicking Retry. Click Cancel to terminate this session.
+'.
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:366:in `power_off'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:473:in `block in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `each'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `each_with_index'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `<main>'

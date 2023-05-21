@@ -1,0 +1,15 @@
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:64:in `parse_response': ManagedObjectNotFound: The object 'vim.VirtualMachine:vm-1482558' has already been deleted or has not been completely created (RbVmomi::Fault)
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:93:in `call'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:229:in `_call'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:77:in `block (2 levels) in init'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:205:in `_get_property'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:38:in `block (2 levels) in init'
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:577:in `revert_to_current_snapshot'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:511:in `rescue in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `<main>'
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/vim/Task.rb:15:in `wait_for_completion': ManagedObjectNotFound: The object 'vim.VirtualMachine:vm-1482558' has already been deleted or has not been completely created (RbVmomi::Fault)
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:425:in `delete_vm'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:385:in `block in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `each'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `each_with_index'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:252:in `<main>'

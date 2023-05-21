@@ -1,0 +1,3 @@
+VM id vm-281646
+Number of attempts to power on virtual machine: 1/5.
+Error executing command ping 192.168.204.55. Err SystemError: A general system error occurred: vix error codes = (3016, 0).

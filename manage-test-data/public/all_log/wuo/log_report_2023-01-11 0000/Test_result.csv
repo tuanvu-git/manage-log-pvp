@@ -1,0 +1,26 @@
+exchange_server_2019_x64,Build Passed,1:4 minute
+exchange_server_2016_x64,Build Passed,9:56 minute
+exchange_server_2010_x64,Build Passed,15:31 minute
+office-2016-x64,Build Passed,18:44 minute
+exchange_server_2013_x64,Build Passed,35:10 minute
+test_WUA_windows-10-21H1-x64-Enterprise,Build Passed,21:18 minute
+office-2013-x86,Build Passed,43:6 minute
+test_WUA_windows-11-x64,Build Passed,2:51 minute
+test_WUA_windows-10-21H2-x64-pro,Build Passed,23:20 minute
+test_WUA_windows-11-22H2-x64,Build Failed,22:52 minute
+test_WUA_windows-server-2008R2-x64,Build Passed,12:14 minute
+test_WUA_windows-10-22H2-x64-Enterprise,Build Passed,31:50 minute
+test_WUA_windows-8.1-x64,Build Passed,20:44 minute
+test_WUA_windows-server-2019-64,Build Passed,4:23 minute
+test_WUA_windows-server-2012-x64,Build Passed,22:57 minute
+test_WUA_windows-server-2022-x64,Build Passed,14:1 minute
+test_windows_sqlserver_2008_r2,Build Passed,3:50 minute
+test_windows_sqlserver_2012_express,Build Passed,3:44 minute
+test_windows_sqlserver_2014_express,Build Passed,4:12 minute
+test_windows_sqlserver_2016,Build Passed,3:42 minute
+test_windows_sqlserver_2017_express,Build Passed,3:41 minute
+test_windows_sqlserver_2019,Build Passed,3:44 minute
+test_WUA_windows-server-2016-64,Build Passed,71:10 minute
+test_WUA_windows-server-2012R2-x64,Build Passed,119:9 minute
+Total products,24
+Total runtime,3:3:23 hour

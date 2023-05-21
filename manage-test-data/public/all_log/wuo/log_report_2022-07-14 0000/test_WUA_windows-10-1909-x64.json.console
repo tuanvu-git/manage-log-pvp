@@ -1,0 +1,29 @@
+VM id vm-76378
+Number of attempts to power on virtual machine: 1/5.
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.5471797549644289 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.5752984691795093 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.5487179656769432 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.01598364227199256 (0 bytes instead of 392 bytes)
+Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 1103 --install --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest/windows-kb890830-x64-v5.103_d81b7dcc4c912082594076928ae93a4ea8e379ff.exe" --force_close 1. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 1/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 2/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 3/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 4/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 5/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 6/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 7/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 8/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 9/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 10/10.
+Error executing command echo 'hau dep trai'. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 11/10.

@@ -1,0 +1,14 @@
+/usr/local/lib/ruby/gems/2.6.0/gems/builder-3.2.4/lib/builder/xmlbase.rb:56:in `initialize_dup': stack level too deep (SystemStackError)
+	from /usr/local/lib/ruby/gems/2.6.0/gems/builder-3.2.4/lib/builder/xmlbase.rb:56:in `dup'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/builder-3.2.4/lib/builder/xmlbase.rb:56:in `block in tag!'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/builder-3.2.4/lib/builder/xmlbase.rb:47:in `each'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/builder-3.2.4/lib/builder/xmlbase.rb:47:in `tag!'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:170:in `obj2xml'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:152:in `block (2 levels) in obj2xml'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:147:in `each'
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/connection.rb:147:in `block in obj2xml'
+	 ... 10062 levels...
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:380:in `block in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each_with_index'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `<main>'

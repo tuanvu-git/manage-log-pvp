@@ -8,12 +8,13 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const date = searchParams.get("date") || "";
   const system = searchParams.get("system") || "";
-  const reportBySystem = await prisma.report.findMany({
+  let reportBySystem = await prisma.report.findMany({
     where: {
       date: date,
       system: system,
     }
   });
+
 
   return NextResponse.json({ reportBySystem });
 }

@@ -1,0 +1,24 @@
+VM id vm-77169
+Number of attempts to power on virtual machine: 1/5.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 1/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 2/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 3/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 4/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 5/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 6/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 7/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 8/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 9/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 10/10.
+Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
+Number of attempts to power on virtual machine: 11/10.

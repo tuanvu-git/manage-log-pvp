@@ -21,6 +21,7 @@ model Report {
   comment String
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
+  isSumarry Boolean @default(false)
   @@unique([date, productName, system])
   // primary key is combine date and name and system
 }

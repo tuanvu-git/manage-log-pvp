@@ -1,0 +1,3 @@
+VM id vm-37136
+#<RbVmomi::Fault: SystemError: A general system error occurred: vix error codes = (1, 19).
+>

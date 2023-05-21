@@ -1,0 +1,402 @@
+
+  <!DOCTYPE HTML>
+  <html>
+  <title>
+     Dashboard AutoPatching
+  </title>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      *{
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+      }
+      body{
+        font-family: Helvetica;
+        -webkit-font-smoothing: antialiased;
+        background: rgba( 71, 147, 227, 1);
+      }
+      h2{
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: white;
+        padding: 10px 0;
+      }
+      .table-wrapper{
+        margin: 10px 250px 10px;
+      }
+      .sortable {
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+
+      }
+      .sortable td, .sortable th {
+        text-align: center;
+        padding: 8px;
+      }
+      .sortable td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+      }
+      .sortable thead th {
+        color: #ffffff;
+        background: #e77837;
+      }
+      .sortable thead th:nth-child(odd) {
+        color: #ffffff;
+        background: #324960;
+      }
+      .sortable tr:nth-child(even) {
+        background: #F8F8F8;
+      }
+      .sortable tr:hover {
+      background-color: rgba(255, 255, 0, 1);
+      }
+      @media (max-width: 767px) {
+        .sortable {
+          display: block;
+          width: 100%;
+        }
+        .table-wrapper:before{
+          content: "Scroll horizontally >";
+          display: block;
+          text-align: right;
+          font-size: 11px;
+          color: white;
+          padding: 0 0 10px;
+        }
+        .sortable thead, .sortable tbody, .sortable thead th {
+          display: block;
+        }
+        .sortable thead th:last-child{
+          border-bottom: none;
+        }
+        .sortable thead {
+          float: left;
+        }
+        .sortable tbody {
+          width: auto;
+          position: relative;
+          overflow-x: auto;
+        }
+        .sortable td, .sortable th {
+          padding: 20px .625em .625em .625em;
+          height: 60px;
+          vertical-align: middle;
+          box-sizing: border-box;
+          overflow-x: hidden;
+          overflow-y: auto;
+          width: 120px;
+          font-size: 13px;
+          text-overflow: ellipsis;
+        }
+        .sortable thead th {
+          text-align: left;
+          border-bottom: 1px solid #f7f7f9;
+        }
+        .sortable tbody tr {
+          display: table-cell;
+        }
+        .sortable tbody tr:nth-child(odd) {
+          background: none;
+        }
+        .sortable tr:nth-child(even) {
+          background: transparent;
+        }
+        .sortable tr td:nth-child(odd) {
+          background: #F8F8F8;
+          border-right: 1px solid #E6E4E4;
+        }
+        .sortable tr td:nth-child(even) {
+          border-right: 1px solid #E6E4E4;
+        }
+        .sortable tbody td {
+          display: block;
+          text-align: center;
+        }
+      }
+      .test-result-step-result-cell-ok {
+        font-weight: bolder;
+        color: #3ed52c;
+      }
+      .test-result-step-result-cell-failure {
+        font-weight: bolder;
+        color: #f6653c;
+      }
+      .summary{
+        text-align: center;
+        font-size: 15px;
+        font-weight: bolder;
+        padding: 0 0 10px;
+      }
+      .button {
+       background-color: #324960;
+       border: none;
+       color: white;
+       padding: 10px 15px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 18px;
+       margin: 1px 1px;
+       cursor: pointer;
+      }
+      .wrap-button {
+       	float:right;
+      }
+    </style>
+  </head>
+  <body>
+  <h2>Dashboard AutoPatching</h2><div class='summary'>
+      <p>2023-03-09 05:00:18 +0700</p><p>Total products: 39</p><p>Total runtime: 02:31:37</p></div>
+  <div class="table-wrapper">
+    <div class="wrap-button">
+    	<a href="/mac" class="button">Mac</a>
+    	<a href="/win" class="button">Window</a>
+      <a href="/wuo" class="button">WUO</a><a href='/mac/old' class='button'>History</a></div>
+
+    <h3>Summary Report</h3>
+    <table class="sortable"">
+    <thead>
+    <tr>
+    <th>Total Test Success</th>
+    <th>Total Test Fail</th>
+    <th>Product Fail List</th>
+    </tr>
+    </thead>
+    <tbody>
+       <tr>
+       <td class='centerCell'>33</td>
+       <td class='centerCell' style='color: #f6653c'>6</td>
+       <td class='centerCell' style='white-space: pre-wrap'>Adobe_Acrobat_Reader_DC_Continuous, TeamViewer, WinZip, Microsoft_OneNote, Microsoft_Outlook, Microsoft_Word</td>
+      </tr>
+       </tbody>
+    </table>
+    <br />
+
+    <h3>Detail Report</h3>
+    <script script type = "text/javascript" src="js/sorttable.js"></script>
+    <table class="sortable">
+      <thead>
+      <tr>
+        <th>Test Suite Name</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Log</th>
+      </tr>
+      </thead>
+      <tbody><tr>
+            <td class='centerCell'>CCleaner</td>
+            <td class='centerCell'>00:31:16</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./CCleaner.json.log" target='blank'>Log CCleaner</a></td>
+          </tr><tr>
+            <td class='centerCell'>Firefox_x64</td>
+            <td class='centerCell'>00:33:34</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Firefox_x64.json.log" target='blank'>Log Firefox_x64</a></td>
+          </tr><tr>
+            <td class='centerCell'>GoToMeeting</td>
+            <td class='centerCell'>00:35:11</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./GoToMeeting.json.log" target='blank'>Log GoToMeeting</a></td>
+          </tr><tr>
+            <td class='centerCell'>Adobe_Acrobat_Reader_Classic_2017</td>
+            <td class='centerCell'>00:44:48</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Adobe_Acrobat_Reader_Classic_2017.json.log" target='blank'>Log Adobe_Acrobat_Reader_Classic_2017</a></td>
+          </tr><tr>
+            <td class='centerCell'>GoogleChrome</td>
+            <td class='centerCell'>00:14:03</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./GoogleChrome.json.log" target='blank'>Log GoogleChrome</a></td>
+          </tr><tr>
+            <td class='centerCell'>Adobe_Acrobat_Reader_DC_Continuous</td>
+            <td class='centerCell'>00:50:08</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./Adobe_Acrobat_Reader_DC_Continuous.json.log" target='blank'>Log Adobe_Acrobat_Reader_DC_Continuous</a></td>
+          </tr><tr>
+            <td class='centerCell'>Opera</td>
+            <td class='centerCell'>00:10:46</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Opera.json.log" target='blank'>Log Opera</a></td>
+          </tr><tr>
+            <td class='centerCell'>Skype</td>
+            <td class='centerCell'>00:13:17</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Skype.json.log" target='blank'>Log Skype</a></td>
+          </tr><tr>
+            <td class='centerCell'>Slack</td>
+            <td class='centerCell'>00:11:14</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Slack.json.log" target='blank'>Log Slack</a></td>
+          </tr><tr>
+            <td class='centerCell'>TeamViewer</td>
+            <td class='centerCell'>00:07:56</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./TeamViewer.json.log" target='blank'>Log TeamViewer</a></td>
+          </tr><tr>
+            <td class='centerCell'>Thunderbird</td>
+            <td class='centerCell'>00:10:16</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Thunderbird.json.log" target='blank'>Log Thunderbird</a></td>
+          </tr><tr>
+            <td class='centerCell'>OpenOffice</td>
+            <td class='centerCell'>00:37:34</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./OpenOffice.json.log" target='blank'>Log OpenOffice</a></td>
+          </tr><tr>
+            <td class='centerCell'>VLC</td>
+            <td class='centerCell'>00:14:51</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./VLC.json.log" target='blank'>Log VLC</a></td>
+          </tr><tr>
+            <td class='centerCell'>WinZip</td>
+            <td class='centerCell'>00:07:37</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./WinZip.json.log" target='blank'>Log WinZip</a></td>
+          </tr><tr>
+            <td class='centerCell'>Webex</td>
+            <td class='centerCell'>00:15:46</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Webex.json.log" target='blank'>Log Webex</a></td>
+          </tr><tr>
+            <td class='centerCell'>BoxSync</td>
+            <td class='centerCell'>00:08:54</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./BoxSync.json.log" target='blank'>Log BoxSync</a></td>
+          </tr><tr>
+            <td class='centerCell'>LibreOffice</td>
+            <td class='centerCell'>00:51:26</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./LibreOffice.json.log" target='blank'>Log LibreOffice</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_Excel</td>
+            <td class='centerCell'>00:23:42</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Microsoft_Excel.json.log" target='blank'>Log Microsoft_Excel</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_OneNote</td>
+            <td class='centerCell'>00:27:59</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./Microsoft_OneNote.json.log" target='blank'>Log Microsoft_OneNote</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_PowerPoint</td>
+            <td class='centerCell'>00:21:28</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Microsoft_PowerPoint.json.log" target='blank'>Log Microsoft_PowerPoint</a></td>
+          </tr><tr>
+            <td class='centerCell'>WinZip7</td>
+            <td class='centerCell'>00:08:31</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./WinZip7.json.log" target='blank'>Log WinZip7</a></td>
+          </tr><tr>
+            <td class='centerCell'>Zoom</td>
+            <td class='centerCell'>00:19:03</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Zoom.json.log" target='blank'>Log Zoom</a></td>
+          </tr><tr>
+            <td class='centerCell'>WinZip8</td>
+            <td class='centerCell'>00:06:51</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./WinZip8.json.log" target='blank'>Log WinZip8</a></td>
+          </tr><tr>
+            <td class='centerCell'>Adobe_Acrobat_Reader_DC_Classic_2015</td>
+            <td class='centerCell'>00:15:02</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Adobe_Acrobat_Reader_DC_Classic_2015.json.log" target='blank'>Log Adobe_Acrobat_Reader_DC_Classic_2015</a></td>
+          </tr><tr>
+            <td class='centerCell'>Little_Snitch</td>
+            <td class='centerCell'>00:08:52</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Little_Snitch.json.log" target='blank'>Log Little_Snitch</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_Outlook</td>
+            <td class='centerCell'>00:46:28</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./Microsoft_Outlook.json.log" target='blank'>Log Microsoft_Outlook</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_Word</td>
+            <td class='centerCell'>00:50:00</td>
+            <td class='centerCell test-result-step-result-cell-failure'>Build Failed</td>
+            <td><a href="./Microsoft_Word.json.log" target='blank'>Log Microsoft_Word</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_Onedrive</td>
+            <td class='centerCell'>00:12:47</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Microsoft_Onedrive.json.log" target='blank'>Log Microsoft_Onedrive</a></td>
+          </tr><tr>
+            <td class='centerCell'>The_Unarchiver</td>
+            <td class='centerCell'>00:06:32</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./The_Unarchiver.json.log" target='blank'>Log The_Unarchiver</a></td>
+          </tr><tr>
+            <td class='centerCell'>Tweetbot</td>
+            <td class='centerCell'>00:09:11</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Tweetbot.json.log" target='blank'>Log Tweetbot</a></td>
+          </tr><tr>
+            <td class='centerCell'>Acrobat_reader_dc_2020</td>
+            <td class='centerCell'>00:18:38</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Acrobat_reader_dc_2020.json.log" target='blank'>Log Acrobat_reader_dc_2020</a></td>
+          </tr><tr>
+            <td class='centerCell'>Vivaldi</td>
+            <td class='centerCell'>00:13:31</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Vivaldi.json.log" target='blank'>Log Vivaldi</a></td>
+          </tr><tr>
+            <td class='centerCell'>Dropbox</td>
+            <td class='centerCell'>00:08:26</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Dropbox.json.log" target='blank'>Log Dropbox</a></td>
+          </tr><tr>
+            <td class='centerCell'>Garmin_Basecamp</td>
+            <td class='centerCell'>00:08:38</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Garmin_Basecamp.json.log" target='blank'>Log Garmin_Basecamp</a></td>
+          </tr><tr>
+            <td class='centerCell'>8x8work</td>
+            <td class='centerCell'>00:07:23</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./8x8work.json.log" target='blank'>Log 8x8work</a></td>
+          </tr><tr>
+            <td class='centerCell'>Microsoft_Teams</td>
+            <td class='centerCell'>00:08:36</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Microsoft_Teams.json.log" target='blank'>Log Microsoft_Teams</a></td>
+          </tr><tr>
+            <td class='centerCell'>Carbon_Copy_Cloner_V6</td>
+            <td class='centerCell'>00:08:10</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Carbon_Copy_Cloner_V6.json.log" target='blank'>Log Carbon_Copy_Cloner_V6</a></td>
+          </tr><tr>
+            <td class='centerCell'>VNCViewer</td>
+            <td class='centerCell'>00:07:21</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./VNCViewer.json.log" target='blank'>Log VNCViewer</a></td>
+          </tr><tr>
+            <td class='centerCell'>Wireshark</td>
+            <td class='centerCell'>00:08:54</td>
+            <td class='centerCell test-result-step-result-cell-ok'>Build Passed</td>
+            <td><a href="./Wireshark.json.log" target='blank'>Log Wireshark</a></td>
+          </tr>
+    <tbody>
+    </table>
+    <script script type = "text/javascript" ">
+    window.onload = function() {
+        (document.getElementsByTagName( "th" )[5]).click();
+    }
+   </script>
+  </div>
+  </body>
+  </html>

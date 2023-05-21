@@ -1,0 +1,25 @@
+VM id vm-77074
+Number of attempts to power on virtual machine: 1/5.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 1/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 2/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 3/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 4/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 5/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 6/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 7/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 8/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 9/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 10/20.
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 11/20.
+Number of attempts to power on virtual machine: 12/20.

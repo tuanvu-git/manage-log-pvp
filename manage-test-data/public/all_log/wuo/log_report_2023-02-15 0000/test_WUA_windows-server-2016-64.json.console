@@ -1,0 +1,6 @@
+VM id vm-258834
+Number of attempts to power on virtual machine: 1/5.
+Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 1103 --install --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest/windows-kb890830-x64-v5.110_fada82c2ea36f45fabda85814f9dacfc68351213.exe" --force_close 1. Err undefined method `[]' for nil:NilClass
+
+    success, js = @vs_controller.get_state re_find["vm"]
+                                                  ^^^^^^

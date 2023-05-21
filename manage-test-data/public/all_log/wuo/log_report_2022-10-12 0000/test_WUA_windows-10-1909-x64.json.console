@@ -1,0 +1,10 @@
+VM id vm-76378
+Number of attempts to power on virtual machine: 1/5.
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.9824432949798636 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.5930123755506488 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.37130719958528136 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.25278962230922286 (0 bytes instead of 392 bytes)
+Downloaded file has different size than reported: C:\Windows\TEMP\vm_utils_run_err_0.30089639207839225 (0 bytes instead of 992 bytes)
+Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
+Number of attempts to power on virtual machine: 1/20.
+Number of attempts to power on virtual machine: 2/20.

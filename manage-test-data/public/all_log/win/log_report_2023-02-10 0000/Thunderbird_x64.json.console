@@ -1,0 +1,13 @@
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:215:in `_get_property': NotAuthenticated:  (RbVmomi::Fault)
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:38:in `block (2 levels) in init'
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:577:in `revert_to_current_snapshot'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:499:in `rescue in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:248:in `<main>'
+/usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:215:in `_get_property': NotAuthenticated:  (RbVmomi::Fault)
+	from /usr/local/lib/ruby/gems/2.6.0/gems/rbvmomi2-3.4.0/lib/rbvmomi/basic_types.rb:38:in `block (2 levels) in init'
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:350:in `power_state'
+	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:416:in `delete_vm'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:373:in `block in <main>'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each_with_index'
+	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `<main>'

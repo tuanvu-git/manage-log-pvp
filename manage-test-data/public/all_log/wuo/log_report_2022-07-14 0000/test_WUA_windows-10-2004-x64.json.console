@@ -1,0 +1,5 @@
+VM id vm-37136
+Number of attempts to power on virtual machine: 1/5.
+SystemError: A general system error occurred: vix error codes = (3016, 0).
+SystemError: A general system error occurred: vix error codes = (3016, 0).
+Number of attempts to power on virtual machine: 1/10.

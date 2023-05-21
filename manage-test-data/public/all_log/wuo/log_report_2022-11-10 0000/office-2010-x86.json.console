@@ -1,0 +1,3 @@
+VM id vm-77040
+Number of attempts to power on virtual machine: 1/5.
+Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 3245 --get --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest" --download 1 --index -1. Err SystemError: A general system error occurred: vix error codes = (3016, 0).

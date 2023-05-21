@@ -1,0 +1,16 @@
+undefined method `[]' for nil:NilClass
+
+             if out_value[:exhausted]
+                         ^^^^^^^^^^^^
+undefined method `[]' for nil:NilClass
+
+             if out_value[:exhausted]
+                         ^^^^^^^^^^^^
+undefined method `[]' for nil:NilClass
+
+             if out_value[:exhausted]
+                         ^^^^^^^^^^^^
+undefined method `[]' for nil:NilClass
+
+             if out_value[:exhausted]
+                         ^^^^^^^^^^^^
