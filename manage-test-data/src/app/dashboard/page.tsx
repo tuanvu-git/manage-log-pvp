@@ -27,6 +27,12 @@ export default function Page({ params }: IPage) {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdatetHistoryList, setIsUpdateHistoryList] = useState(0);
   const [haveReportsToday, setHaveReportsToday] = useState(true);
+  const [sortTable, setSorttable] = useState<any>({
+    productName: false,
+    time: false,
+    buildStatus: false,
+    log: false,
+  });
   //#endregion useState
   //#region variable zone
   //#endregion
@@ -46,7 +52,37 @@ export default function Page({ params }: IPage) {
         system: selectedSystem
       }
     }).then((res: { data: any; }) => {
-      const historyList: Report[] = res.data.history;
+      let historyList: Report[] = res.data.history;
+      let dateArr: any[] = [];
+      for (let i = 2022; i < 2100; i++) {
+        dateArr.push(i);
+      }
+      // historyList.sort(a,b) => {
+      //   if(a.)
+      // });
+      historyList.sort((a, b) => {
+        const sub = a.date.substring(0, 4);
+        if (dateArr.includes(sub)) {
+          return 0;
+        }
+        return -1;
+      });
+      const ticketReport = historyList.filter(r => {
+        const sub = r.date.substring(0, 4);
+        if (dateArr.includes(sub)) {
+          return false;
+        }
+        return true;
+      });
+      const realReport = historyList.filter(r => {
+        const sub = r.date.substring(0, 4);
+        if (dateArr.includes(sub)) {
+          return true;
+        }
+        return false;
+      });
+
+      historyList = [...realReport, ...ticketReport];
       setHistoryList(historyList);
       setIsLoading(false);
       if (historyList.length === 0) {
@@ -67,6 +103,9 @@ export default function Page({ params }: IPage) {
   }, [stackMessage])
 
   const onCommentChange = (item: Report) => {
+    const reports = [...currentReports];
+    reports.find(r => r.id === item.id)!.comment = item.comment;
+    setCurrentReports(reports);
     axios
       .post("api/report/", {
         id: item.id,
@@ -77,6 +116,23 @@ export default function Page({ params }: IPage) {
       });
     console.log('on comment change', item);
   };
+
+  const sortData = (field: string) => {
+    const tmp = currentReports.slice(0).sort((report1: any, reprot2: any) => {
+
+      if (sortTable[field]) {
+        return report1[field] > reprot2[field] ? 1 : -1
+      } else {
+        return report1[field] > reprot2[field] ? -1 : 1
+      }
+    });
+
+    setSorttable({
+      ...sortTable,
+      [field]: !sortTable[field]
+    })
+    setCurrentReports(tmp);
+  }
 
 
   const executeImport = () => {
@@ -277,11 +333,11 @@ export default function Page({ params }: IPage) {
               <table className="sortable">
                 <thead>
                   <tr>
-                    <th>Test Suite Name</th>
-                    <th>Time</th>
-                    <th>Status</th>
-                    <th>Log</th>
-                    <th>Comment</th>
+                    <th onClick={() => { sortData('productName') }}>Test Suite Name</th>
+                    <th onClick={() => { sortData('time') }}>Time</th>
+                    <th onClick={() => { sortData('buildStatus') }}>Status</th>
+                    <th onClick={() => { sortData('productName') }}>Log</th>
+                    <th onClick={() => { sortData('comment') }}>Comment</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -291,7 +347,8 @@ export default function Page({ params }: IPage) {
 
                         <td className="centerCell">{report.productName}</td>
                         <td className="centerCell">{report.time}</td>
-                        <td className="centerCell test-result-step-result-cell-ok">
+
+                        <td className={`centerCell ${report.buildStatus === 'Build Passed' ? 'test-result-step-result-cell-ok' : 'test-result-step-result-cell-failure'}`}>
                           {report.buildStatus}
                         </td>
                         <td>
