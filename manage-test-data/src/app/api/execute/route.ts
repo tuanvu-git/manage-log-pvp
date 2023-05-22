@@ -136,13 +136,13 @@ async function importDB(file: File, system: "win" | "mac" | "wuo", currentDate: 
         time: report.time,
         system: system,
         isSumarry: isLast,
-        filePath: `/${moment(currentDate).format("YYYY-MM-DD")}/${system}/${report.name}.json.log`,
+        filePath: `/all_log/${system}/log_report_${currentDate}/${report.name}.json.log`,
         comment: mappingComment(allPreviusData, report.name, system),
       },
       update: {
         buildStatus: report.status || '',
         time: report.time,
-        filePath: `/${moment(currentDate).format("YYYY-MM-DD")}/${system}/${report.name}.json.log`,
+        filePath: `/all_log/${system}/log_report_${currentDate}/${report.name}.json.log`,
         comment: mappingComment(allPreviusData, report.name, system),
       },
     });
