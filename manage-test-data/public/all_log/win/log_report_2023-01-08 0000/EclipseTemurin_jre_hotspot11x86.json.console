@@ -1,9 +1,0 @@
-/home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:577:in `revert_to_current_snapshot': undefined method `snapshot' for nil:NilClass (NoMethodError)
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:499:in `rescue in <main>'
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:248:in `<main>'
-/home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:350:in `power_state': undefined method `runtime' for nil:NilClass (NoMethodError)
-	from /home/dev/om/dev/vuln_automation/src/Vsphere/Tools/UtilsVsphere_new.rb:366:in `power_off'
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:461:in `block in <main>'
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each'
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `each_with_index'
-	from ./src/Vsphere/Tools/AutoTest_trial.rb:250:in `<main>'

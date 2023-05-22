@@ -1,3 +1,0 @@
-VM id vm-83161
-#<RbVmomi::Fault: SystemError: A general system error occurred: vix error codes = (3016, 0).
->

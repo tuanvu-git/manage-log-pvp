@@ -1,7 +1,0 @@
-VM id vm-77070
-Number of attempts to power on virtual machine: 1/5.
-Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
-Number of attempts to power on virtual machine: 1/20.
-Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
-Number of attempts to power on virtual machine: 2/20.
-Number of attempts to power on virtual machine: 3/20.

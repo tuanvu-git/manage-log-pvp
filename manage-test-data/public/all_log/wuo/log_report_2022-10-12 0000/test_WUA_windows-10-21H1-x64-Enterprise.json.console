@@ -1,5 +1,0 @@
-VM id vm-37126
-Number of attempts to power on virtual machine: 1/5.
-Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 1103 --install --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest/windows-kb890830-x64-v5.106_127ab2de42d5da9becd880a7b483e07c5ceccf02.exe" --force_close 1. Err SystemError: A general system error occurred: vix error codes = (3016, 0).
-Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 1103 --install --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest/windows10.0-kb5018410-x64_fb086833ff2e6b7c0b7f17f0c6f77917a8a9e3b5.cab" --force_close 1. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
-Number of attempts to power on virtual machine: 1/20.

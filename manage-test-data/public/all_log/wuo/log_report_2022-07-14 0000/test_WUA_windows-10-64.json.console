@@ -1,7 +1,0 @@
-VM id vm-37126
-Number of attempts to power on virtual machine: 1/5.
-Error executing command echo 'hau dep trai'. Err InvalidState: The operation is not allowed in the current state.
-Number of attempts to power on virtual machine: 1/10.
-Error executing command echo 'hau dep trai'. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
-Number of attempts to power on virtual machine: 2/10.
-Number of attempts to power on virtual machine: 3/10.

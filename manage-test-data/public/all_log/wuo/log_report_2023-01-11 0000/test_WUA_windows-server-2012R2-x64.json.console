@@ -1,2 +1,0 @@
-VM id vm-37124
-#<RbVmomi::Fault: InvalidPowerState: The attempted operation cannot be performed in the current state (Powered off).>

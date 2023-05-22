@@ -1,2 +1,0 @@
-VM id vm-1489826
-#<RbVmomi::Fault: InvalidGuestLogin: Failed to authenticate with the guest operating system using the supplied credentials.>

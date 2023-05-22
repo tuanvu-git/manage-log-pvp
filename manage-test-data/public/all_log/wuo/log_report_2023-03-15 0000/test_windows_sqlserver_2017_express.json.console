@@ -1,4 +1,0 @@
-VM id vm-86141
-Number of attempts to power on virtual machine: 1/5.
-Error executing command & New-Item -ItemType directory -Path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest". Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
-Error executing command & "C:/Users/$env:UserName/Desktop/wrapper_wuo/test_auto_patching.exe" --db "C:/Users/$env:UserName/Desktop/wrapper_wuo/wuo.dat" --sig 3378 --get --path "C:/Users/$env:UserName/Desktop/wrapper_wuo/latest" --download 1 --index -1. Err GuestOperationsUnavailable: The guest operations agent could not be contacted.
