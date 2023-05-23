@@ -176,3 +176,22 @@ async function importDB(arrObject: ICSVReport[], system: "win" | "mac" | "wuo", 
 
   return reports;
 }
+
+// delete data by date
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const folderName = searchParams.get("folderName") || "";
+  const system = searchParams.get("system") || "";
+  const path = prefix + `${system}\\${folderName}`;
+  await fs.rmSync(path, { recursive: true, force: true });
+  const deletedReport = await prisma.report.deleteMany({
+    where: {
+      folderName: folderName,
+      system: system
+    },
+  });
+  return NextResponse.json({
+    data: deletedReport,
+    message: "Deleted Data Successfully",
+  });
+}

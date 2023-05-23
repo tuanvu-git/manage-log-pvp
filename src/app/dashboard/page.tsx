@@ -4,7 +4,7 @@ import { IPage } from "@/interface/IPage";
 import { IReport } from "@/interface/api/IReport";
 import { Report } from "@prisma/client";
 import axios from "axios";
-import { Button, FileInput, Label, ListGroup, Modal, TextInput, Toast } from "flowbite-react";
+import { Button, Label, ListGroup, Modal, Select, TextInput, Toast } from "flowbite-react";
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import "./page.scss";
@@ -39,9 +39,8 @@ export default function Page({ params }: IPage) {
   //#endregion
   //#region  useRef
   const dateRefModal = useRef<HTMLInputElement>(null);
-  const fileWindowRefModal = useRef<HTMLInputElement>(null);
-  const fileMacRefModal = useRef<HTMLInputElement>(null);
-  const fileWUORefModal = useRef<HTMLInputElement>(null);
+  const systemRefModal = useRef<HTMLSelectElement>(null);
+
   //#endregion
 
   useEffect(() => {
@@ -114,48 +113,6 @@ export default function Page({ params }: IPage) {
     setCurrentReports(tmp);
   }
 
-
-  const executeImport = () => {
-    // allow fileNull
-    let date = dateRefModal.current?.value as string;
-    date = moment(date).format('YYYY-MM-DD');
-    const fileWindow: File | null = fileWindowRefModal.current!.files ? fileWindowRefModal.current!.files[0] : null;
-    const fileMac: File | null = fileMacRefModal.current!.files ? fileMacRefModal.current!.files[0] : null;
-    const fileWUO: File | null = fileWUORefModal.current!.files ? fileWUORefModal.current!.files[0] : null;
-    let pattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-    let result = pattern.test(date);
-    if (!result) {
-      alert('Please input the correct date with the format "YYYY-MM-DD"');
-      return;
-    }
-    var bodyFormData = new FormData();
-    bodyFormData.append('date', date);
-    fileWindow && bodyFormData.append('fileWindow', fileWindow);
-    fileMac && bodyFormData.append('fileMac', fileMac);
-    fileWUO && bodyFormData.append('fileWUO', fileWUO);
-    setIsLoading(true);
-    axios({
-      method: "post",
-      url: "/api/execute",
-      data: bodyFormData,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        //handle success
-        console.log(response);
-        setStackMessage(response.data.message);
-        setIsShowModel(false);
-        setIsUpdateHistoryList(isUpdatetHistoryList + 1);
-        setIsLoading(false);
-      })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
-        setIsShowModel(true);
-        setIsLoading(false);
-      });
-  };
-
   const onSearchDateChange = (event: any) => {
     const date: string = moment(event.target.value).format('YYYY-MM-DD');
     setSelectedDate(date);
@@ -163,16 +120,13 @@ export default function Page({ params }: IPage) {
 
   const executeDelete = () => {
     const date = dateRefModal.current?.value as string;
-    let pattern = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
-    let result = pattern.test(date);
-    if (!result) {
-      alert('Please input the correct date with the format "YYYY-MM-DD"');
-      return;
-    }
+    const system = systemRefModal.current?.value as string;
+
     setIsLoading(true);
-    axios.delete('/api/execute', {
+    axios.delete('/api/execute-v2', {
       params: {
-        date: date
+        folderName: date,
+        system: system
       }
     })
       .then(function (response) {
@@ -368,7 +322,7 @@ export default function Page({ params }: IPage) {
           onClose={() => setIsShowModel(false)}
         >
           <Modal.Header>
-            Scriping insert/delete data
+            Scriping delete data
           </Modal.Header>
           <Modal.Body>
             <div className="space-y-6">
@@ -377,7 +331,7 @@ export default function Page({ params }: IPage) {
                   <div className="mb-2 block">
                     <Label
                       htmlFor="date"
-                      value="Date"
+                      value="Folder Name"
                     />
                   </div>
                   <TextInput
@@ -388,46 +342,28 @@ export default function Page({ params }: IPage) {
                     required={true}
                   />
                 </div>
-                <div id="fileUpload" className="hidden">
-                  <div className="mb-2 block">
-                    <Label
-                      htmlFor="file1"
-                      value="Window csv"
-                    />
-                  </div>
-                  <FileInput
-                    id="file1"
-                    accept='.csv'
-                    ref={fileWindowRefModal}
-                  />
-                </div>
-                <div id="fileUpload" className="hidden">
-                  <div className="mb-2 block">
-                    <Label
-                      htmlFor="file2"
-                      value="Mac csv"
-                    />
-                  </div>
-                  <FileInput
-                    id="file2"
-                    accept='.csv'
-                    ref={fileMacRefModal}
-                  />
-                </div>
-                <div id="fileUpload" className="hidden">
-                  <div className="mb-2 block">
-                    <Label
-                      htmlFor="file3"
-                      value="WUO csv"
-                    />
-                  </div>
-                  <FileInput
-                    id="file3"
-                    accept='.csv'
-                    ref={fileWUORefModal}
-                  />
-                </div>
 
+                <div className="mb-2 block">
+                  <Label
+                    htmlFor="countries"
+                    value="Select your country"
+                  />
+                </div>
+                <Select
+                  id="system"
+                  required={true}
+                  ref={systemRefModal}
+                >
+                  <option value={'mac'}>
+                    mac
+                  </option>
+                  <option value={'win'}>
+                    win
+                  </option>
+                  <option value={'wuo'}>
+                    wuo
+                  </option>
+                </Select>
 
                 <Button type="button" onClick={executeDelete}>
                   Execute Delete
