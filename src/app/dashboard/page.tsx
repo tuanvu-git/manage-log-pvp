@@ -346,7 +346,7 @@ export default function Page({ params }: IPage) {
                 <div className="mb-2 block">
                   <Label
                     htmlFor="countries"
-                    value="Select your country"
+                    value="OS"
                   />
                 </div>
                 <Select
