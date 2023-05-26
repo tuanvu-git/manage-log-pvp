@@ -164,7 +164,6 @@ async function importDB(arrObject: ICSVReport[], system: "win" | "mac" | "wuo", 
           buildStatus: report.status || '',
           time: report.time,
           filePath: `/all_log/${system}/${folderName}/${report.name}.json.log`,
-          comment: mappingComment(allPreviusData, report.name, system),
         },
       });
       reports.push(insertedReport);
