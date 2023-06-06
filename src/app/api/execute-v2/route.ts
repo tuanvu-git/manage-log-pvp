@@ -1,7 +1,6 @@
 import { ICSVReport } from "@/interface/api/IReport";
 import { PrismaClient, Report } from "@prisma/client";
 import fs from 'fs';
-import moment from "moment";
 import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 const prefix = 'public\\all_log\\';
@@ -93,22 +92,59 @@ async function importDB(arrObject: ICSVReport[], system: "win" | "mac" | "wuo", 
   let reports: any[] = [];
 
   let allPreviusData: Report[] = [];
-  if (!isMigratePhaseBool) {
-    const regex = /[0-9]{4}-[0-9]{2}-[0-9]{2}/g;
-    const found = folderName.match(regex);
-    if (found && found.length > 0) {
-      const allPreviusDataWM = await prisma.report.findMany({
+  const regex = /[0-9]{4}-[0-9]{2}-[0-9]{2}/g;
+  const found = folderName.match(regex);
+  if (found && found.length > 0) {
+    const dateMac = await prisma.report.findMany({
+      where: {
+        system: 'mac',
+      },
+      distinct: ['folderName'],
+      orderBy: [{
+        testType: 'asc'
+      }, {
+        folderName: 'desc',
+      }],
+      select: {
+        id: true,
+        folderName: true,
+      }
+    });
+
+    if (dateMac.length > 0) {
+      const allPreviusDataMac = await prisma.report.findMany({
         where: {
-          system: {
-            in: ['win', 'mac']
-          },
-          folderName: {
-            contains: moment(found[0]).add(-1, "day").format("YYYY-MM-DD")
-          },
+          system: 'mac',
+          folderName: dateMac[0].folderName,
         },
       });
+      allPreviusData = allPreviusData.concat(allPreviusDataMac)
+    }
 
-      allPreviusData = allPreviusData.concat(allPreviusDataWM);
+    const dateWin = await prisma.report.findMany({
+      where: {
+        system: 'win',
+      },
+      distinct: ['folderName'],
+      orderBy: [{
+        testType: 'asc'
+      }, {
+        folderName: 'desc',
+      }],
+      select: {
+        id: true,
+        folderName: true,
+      }
+    });
+
+    if (dateWin.length > 0) {
+      const allPreviusDataWIn = await prisma.report.findMany({
+        where: {
+          system: 'win',
+          folderName: dateWin[0].folderName,
+        },
+      });
+      allPreviusData = allPreviusData.concat(allPreviusDataWIn)
     }
 
     const dateWUO = await prisma.report.findMany({

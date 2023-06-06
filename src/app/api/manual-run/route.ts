@@ -1,7 +1,6 @@
 import { ICSVReport } from "@/interface/api/IReport";
 import { PrismaClient, Report } from "@prisma/client";
 import fs from 'fs';
-import moment from "moment";
 const prisma = new PrismaClient();
 const prefix = 'public\\all_log\\';
 
@@ -157,43 +156,82 @@ async function importDB(arrObject: ICSVReport[], system: "win" | "mac" | "wuo", 
     const regex = /[0-9]{4}-[0-9]{2}-[0-9]{2}/g;
     const found = folderName.match(regex);
     if (found && found.length > 0) {
-      const allPreviusDataWM = await prisma.report.findMany({
+      const dateMac = await prisma.report.findMany({
         where: {
-          system: {
-            in: ['win', 'mac']
-          },
-          folderName: {
-            contains: moment(found[0]).add(-1, "day").format("YYYY-MM-DD")
-          },
+          system: 'mac',
         },
+        distinct: ['folderName'],
+        orderBy: [{
+          testType: 'asc'
+        }, {
+          folderName: 'desc',
+        }],
+        select: {
+          id: true,
+          folderName: true,
+        }
       });
-
-      allPreviusData = allPreviusData.concat(allPreviusDataWM);
-    }
-
-    const dateWUO = await prisma.report.findMany({
-      where: {
-        system: 'wuo',
-      },
-      distinct: ['folderName'],
-      orderBy: [{
-        testType: 'asc'
-      }, {
-        folderName: 'desc',
-      }],
-      select: {
-        id: true,
-        folderName: true,
+  
+      if (dateMac.length > 0) {
+        const allPreviusDataMac = await prisma.report.findMany({
+          where: {
+            system: 'mac',
+            folderName: dateMac[0].folderName,
+          },
+        });
+        allPreviusData = allPreviusData.concat(allPreviusDataMac)
       }
-    });
-    if (dateWUO.length > 0) {
-      const allPreviusDataWUO = await prisma.report.findMany({
+  
+      const dateWin = await prisma.report.findMany({
+        where: {
+          system: 'win',
+        },
+        distinct: ['folderName'],
+        orderBy: [{
+          testType: 'asc'
+        }, {
+          folderName: 'desc',
+        }],
+        select: {
+          id: true,
+          folderName: true,
+        }
+      });
+  
+      if (dateWin.length > 0) {
+        const allPreviusDataWIn = await prisma.report.findMany({
+          where: {
+            system: 'win',
+            folderName: dateWin[0].folderName,
+          },
+        });
+        allPreviusData = allPreviusData.concat(allPreviusDataWIn)
+      }
+  
+      const dateWUO = await prisma.report.findMany({
         where: {
           system: 'wuo',
-          folderName: dateWUO[0].folderName,
         },
+        distinct: ['folderName'],
+        orderBy: [{
+          testType: 'asc'
+        }, {
+          folderName: 'desc',
+        }],
+        select: {
+          id: true,
+          folderName: true,
+        }
       });
-      allPreviusData = allPreviusData.concat(allPreviusDataWUO)
+      if (dateWUO.length > 0) {
+        const allPreviusDataWUO = await prisma.report.findMany({
+          where: {
+            system: 'wuo',
+            folderName: dateWUO[0].folderName,
+          },
+        });
+        allPreviusData = allPreviusData.concat(allPreviusDataWUO)
+      }
     }
 
     for (let i = 0; i < arrObject.length; i++) {
